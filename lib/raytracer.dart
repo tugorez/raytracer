@@ -1,8 +1,9 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
 library;
 
-export 'src/raytracer_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/canvas.dart';
+export 'src/color.dart';
+export 'src/coordinate.dart';
+export 'src/raytracer.dart';
+export 'src/scene.dart';
+export 'src/sphere.dart';
+export 'src/viewport.dart';
