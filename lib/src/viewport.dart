@@ -2,8 +2,8 @@ import 'coordinate.dart';
 
 class Viewport {
   final Coordinate center;
-  final double width;
-  final double height;
+  final int width;
+  final int height;
 
   Viewport({
     required this.center,

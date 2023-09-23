@@ -2,10 +2,6 @@ import 'package:raytracer/raytracer.dart';
 
 void main() {
   final origin = Coordinate(x: 0, y: 0, z: 0);
-  final canvas = Canvas(
-    width: 256,
-    height: 256,
-  );
   final viewport = Viewport(
     center: Coordinate(x: 0, y: 0, z: 1),
     width: 10,
@@ -20,17 +16,23 @@ void main() {
       ),
     ],
   );
-
   final raytracer = Raytracer(
     origin: origin,
     viewport: viewport,
     scene: scene,
-    canvas: canvas,
   );
-
-  print(canvas);
-  print(origin);
-  print(viewport);
-  print(scene);
-  print(raytracer);
+  final canvas = raytracer.render();
+  var serialized = '';
+  for (var row = 0; row < canvas.rows; row++) {
+    for (var column = 0; column < canvas.columns; column++) {
+      final color = canvas[row][column];
+      final r = color.red;
+      final g = color.green;
+      final b = color.blue;
+      serialized += '$r;$g;$b';
+      if (column != (canvas.columns - 1)) serialized += ',';
+    }
+    if (row != (canvas.rows - 1)) serialized += '\n';
+  }
+  print(serialized);
 }
